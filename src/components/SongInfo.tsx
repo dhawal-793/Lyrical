@@ -1,9 +1,22 @@
-import { StyleSheet, View } from 'react-native'
+import { PropsWithChildren } from 'react'
+import { StyleSheet, View, Text } from 'react-native'
+import { Track } from 'react-native-track-player'
 
-const SongInfo = () => {
+type SongInfoProps = PropsWithChildren<{
+    track: Track | null | undefined
+}>
+
+const SongInfo = ({ track }: SongInfoProps) => {
     return (
         <View>
-
+            <View>
+                <Text>
+                    {track?.title}
+                </Text>
+                <Text>
+                    {track?.artist} . {track?.album}
+                </Text>
+            </View>
         </View>
     )
 }
