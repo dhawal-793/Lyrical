@@ -1,4 +1,4 @@
-import { View, StyleSheet, Text } from 'react-native'
+import { View, StyleSheet, Text, Pressable } from 'react-native'
 import { playbackService } from '../../musicPlayerServices'
 import TrackPlayer, { State, usePlaybackState } from 'react-native-track-player'
 import Icon from 'react-native-vector-icons/MaterialIcons'
@@ -27,7 +27,25 @@ const CcontrolCenter = () => {
 
     return (
         <View>
-            <Text>ControlCenter</Text>
+            <Pressable onPress={skipToPrevious}>
+                <Icon
+                    name="skip-previous"
+                    size={40}
+                />
+            </Pressable>
+            <Pressable onPress={() => TogglePlabck(playbackState)}>
+                <Icon
+                    name={playbackState === State.Playing ? "pause" : "play-arrow"}
+                    size={40}
+                />
+            </Pressable>
+            <Pressable onPress={skipToNext}>
+                <Icon
+                    name="skip-next"
+                    size={40}
+                />
+            </Pressable>
+
         </View>
     )
 }
