@@ -1,6 +1,6 @@
 import Slider from '@react-native-community/slider'
 import { View, Text, StyleSheet } from 'react-native'
-import { useProgress } from 'react-native-track-player'
+import TrackPlayer, { useProgress } from 'react-native-track-player'
 
 const SongSlider = () => {
 
@@ -15,6 +15,7 @@ const SongSlider = () => {
                 thumbTintColor='#FFFFFF'
                 maximumTrackTintColor='#FFFFFF'
                 style={styles.slider}
+                onValueChange={async (value) => await TrackPlayer.seekTo(value)}
             />
             <View style={styles.timeContainer}>
                 <Text style={styles.time}>
