@@ -1,9 +1,9 @@
-import { View, StyleSheet, Text, Pressable } from 'react-native'
+import { View, StyleSheet, Pressable } from 'react-native'
 import TrackPlayer, { State, usePlaybackState } from 'react-native-track-player'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 
 
-const CcontrolCenter = () => {
+const ControlCenter = () => {
 
     const playbackState = usePlaybackState()
 
@@ -66,4 +66,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default CcontrolCenter
+export default ControlCenter
