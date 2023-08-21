@@ -26,9 +26,11 @@ function App(): JSX.Element {
     setup()
   }, [])
 
+
+
   if (!isPlayerReady) {
     return (
-      <SafeAreaView>
+      <SafeAreaView style={[styles.container, { alignItems: 'center', justifyContent: 'center' }]}>
         <ActivityIndicator />
       </SafeAreaView>
     )
