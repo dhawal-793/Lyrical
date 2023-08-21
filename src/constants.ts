@@ -38,7 +38,7 @@ export const playListData: Track[] = [
         title: 'Faded',
         artist: 'Alan Walker',
         album: 'Different World',
-        artwork: require('./assets/images/Faded.jpg'),
+        artwork: require('./assets/images/Faded.png'),
         url: require('./assets/audios/Faded.mp3'),
     },
 ]
