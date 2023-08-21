@@ -1,12 +1,19 @@
 import { useState } from 'react'
-import { FlatList, Image, StyleSheet, Text, View, Dimensions } from 'react-native'
+import { Image, StyleSheet, View, Dimensions } from 'react-native'
 import TrackPlayer, { Track, Event, useTrackPlayerEvents } from 'react-native-track-player'
-import { playListData } from '../constants'
-import CcontrolCenter from '../components/CcontrolCenter'
+import ControlCenter from '../components/ControlCenter'
 import SongSlider from '../components/SongSlider'
 import SongInfo from '../components/SongInfo'
 
 const { width } = Dimensions.get('window')
+
+const images = [
+    require('../assets/images/Cheap_Thrills.png'),
+    require('../assets/images/On_My_Way.png'),
+    require('../assets/images/In_The_End.jpg'),
+    require('../assets/images/Teri_Mitti.jpg'),
+    require('../assets/images/Faded.png'),
+]
 
 const MusicPlayer = () => {
 
@@ -25,32 +32,19 @@ const MusicPlayer = () => {
         }
     })
 
-    const renderArtWork = () => {
-        return (
-            <View style={styles.listArtWrapper}>
-                <View style={styles.albumContainer}>
-                    {track?.artwork && (
-                        <Image
-                            source={{ uri: track?.artwork?.toString() }}
-                            style={styles.albumArtImg}
-                        />
-                    )}
-                </View>
-            </View>
-        )
-    }
-
     return (
         <View style={styles.container}>
-            <FlatList
-                horizontal
-                data={playListData}
-                renderItem={renderArtWork}
-                keyExtractor={song => song.id.toString()}
-            />
+            <View style={styles.albumContainer}>
+                {track?.artwork && (
+                    <Image
+                        source={images[track.id - 1]}
+                        style={styles.albumArtImg}
+                    />
+                )}
+            </View>
             <SongInfo track={track} />
             <SongSlider />
-            <CcontrolCenter />
+            <ControlCenter />
         </View>
     )
 }
@@ -63,18 +57,17 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         backgroundColor: '#001d23',
     },
-    listArtWrapper: {
-        width: width,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
     albumContainer: {
-        width: 300,
+        width: width,
         height: 300,
+        flexDirection: 'row',
+        justifyContent: 'center',
+        marginVertical: 55,
     },
     albumArtImg: {
         height: '100%',
         borderRadius: 4,
+        marginHorizontal: 'auto',
     },
 })
 
